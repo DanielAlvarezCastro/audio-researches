@@ -1,0 +1,67 @@
+#N canvas -9 -9 1920 976 10;
+#X obj 29 354 dac~;
+#X obj 26 205 osc~ 440, f 9;
+#X obj 39 279 *~;
+#X obj 217 110 hsl 128 15 0 1 0 0 empty empty Volumen -2 -8 0 10 -262144
+-1 -1 6700 1;
+#X msg 214 52 \; pd dsp 0 \;;
+#X obj 46 15 key;
+#X floatatom 25 82 5 0 0 0 - - -;
+#X obj 25 110 mtof;
+#X floatatom 25 139 5 0 0 0 - - -;
+#X obj 25 53 + 20;
+#X text 259 37 OFF ON;
+#X obj 214 23 loadbang;
+#X obj 108 352 tabwrite~ wave;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array wave 100 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0;
+#X coords 0 1 100 -1 200 150 1 0 0;
+#X restore 290 175 graph;
+#X obj 198 327 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 204 305 metro 100;
+#X obj 233 240 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 94 308 writesf~;
+#X msg 185 138 open out.wav;
+#X msg 197 163 start;
+#X msg 244 163 stop;
+#X msg 281 53 \; pd dsp 1 \;;
+#X obj 134 19 keyup;
+#X obj 120 115 vline~;
+#X msg 157 78 0 700;
+#X msg 72 59 1.5 10 \, 0.8 200 \, 0.5 1000, f 8;
+#X obj 122 149 *~;
+#X text 281 343 Basic Synth by Daniel Álvarez Castro & Grabiel Aramis
+Sardaneta del Collado;
+#X text 272 143 Recording Controls;
+#X text 202 217 Enable Display;
+#X text 271 88 Use numeric keys 1-9 to play notes;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 2 0 0 1;
+#X connect 2 0 17 0;
+#X connect 2 0 12 0;
+#X connect 3 0 26 1;
+#X connect 5 0 9 0;
+#X connect 5 0 25 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 1 0;
+#X connect 9 0 6 0;
+#X connect 11 0 4 0;
+#X connect 14 0 12 0;
+#X connect 15 0 14 0;
+#X connect 16 0 15 0;
+#X connect 18 0 17 0;
+#X connect 19 0 17 0;
+#X connect 20 0 17 0;
+#X connect 22 0 24 0;
+#X connect 23 0 26 0;
+#X connect 24 0 23 0;
+#X connect 25 0 23 0;
+#X connect 26 0 2 1;
