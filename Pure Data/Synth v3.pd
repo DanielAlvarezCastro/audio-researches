@@ -1,0 +1,99 @@
+#N canvas -9 -9 1920 976 10;
+#X obj 29 354 dac~;
+#X obj 29 303 *~;
+#X obj 182 207 hsl 128 15 0 1 0 0 empty empty Loudness -2 -8 0 10 -262144
+-1 -1 650 1;
+#X msg 118 42 \; pd dsp 0 \;;
+#X obj 33 3 key;
+#X floatatom 33 90 5 0 0 0 - - -;
+#X obj 33 118 mtof;
+#X floatatom 33 147 5 0 0 0 - - -;
+#X obj 33 61 + 20;
+#X text 166 26 OFF ON;
+#X obj 118 13 loadbang;
+#X obj 222 399 tabwrite~ wave;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array wave 100 float 3;
+#A 0 0.00275761 0.00275365 0.00275076 0.00274926 0.00274938 0.00275123
+0.00275482 0.00276002 0.00276666 0.00277445 0.00278309 0.00279225 0.0028016
+0.00281081 0.00281957 0.00282763 0.00283473 0.00284066 0.00284526 0.00284841
+0.00285005 0.00285019 0.00284891 0.0028464 0.00284288 0.00283868 0.00283416
+0.00282968 0.00282563 0.00282236 0.00282014 0.00281916 0.00281955 0.00282129
+0.00282432 0.00282848 0.00283355 0.0028393 0.00284547 0.00285179 0.00285803
+0.00286397 0.00286942 0.00287419 0.00287814 0.00288113 0.00288307 0.00288389
+0.00288358 0.00288218 0.00287978 0.00287655 0.00287271 0.00286853 0.00286429
+0.00286029 0.00285681 0.00285407 0.00285224 0.0028514 0.00285157 0.00285267
+0.0028546 0.00285717 0.00286022 0.00286354 0.00286695 0.0028703 0.00287344
+0.00287625 0.00287863 0.00288049 0.00288174 0.00288231 0.00288216 0.00288124
+0.00287956 0.00287716 0.00287413 0.00287062 0.00286679 0.00286286 0.00285902
+0.00285549 0.00285243 0.00284997 0.00284816 0.00284701 0.00284646 0.00284641
+0.00284675 0.00284732 0.002848 0.00284867 0.00284925 0.00284966 0.00284987
+0.00284984 0.00284955 0.00284897;
+#X coords 0 1 100 -1 200 150 1 0 0;
+#X restore 373 205 graph;
+#X obj 264 384 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 264 355 metro 100;
+#X obj 264 328 tgl 15 0 empty empty Enable_Display 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 203 367 writesf~;
+#X msg 205 261 open out.wav;
+#X msg 219 291 start;
+#X msg 265 291 stop;
+#X msg 195 43 \; pd dsp 1 \;;
+#X obj 115 316 vline~;
+#X obj 145 328 *~;
+#X text 301 366 Basic Synth by Daniel Álvarez Castro & Grabiel Aramis
+Sardaneta del Collado;
+#X text 205 239 Recording Controls;
+#X text 312 165 Use numeric keys 1-9 to play notes;
+#X msg 115 263 2 200 \, 1 150 200 \, 0 300 500, f 10;
+#X obj 28 234 osc~;
+#X obj 74 177 osc~;
+#X obj 74 206 *~;
+#X obj 28 205 +~;
+#X floatatom 119 118 5 0 0 0 - - -;
+#X floatatom 119 146 5 0 0 0 - - -;
+#X obj 28 263 lop~;
+#X obj 170 174 hsl 128 15 700 0 0 0 empty empty LP_Filter_Max_Frecuency
+-2 -8 0 10 -262144 -1 -1 4800 1;
+#X floatatom 131 225 5 0 0 0 - - -;
+#X obj 33 32 moses 60;
+#X obj 170 139 hsl 128 15 0 1000 0 0 empty empty β -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 170 103 hsl 128 15 0 10000 0 0 empty empty Molulation_Frecuency
+-2 -8 0 10 -262144 -1 -1 0 1;
+#X obj 67 263 key;
+#X connect 1 0 0 0;
+#X connect 1 0 0 1;
+#X connect 1 0 16 0;
+#X connect 1 0 11 0;
+#X connect 2 0 22 1;
+#X connect 4 0 36 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 7 0 30 0;
+#X connect 8 0 5 0;
+#X connect 10 0 3 0;
+#X connect 13 0 11 0;
+#X connect 14 0 13 0;
+#X connect 15 0 14 0;
+#X connect 17 0 16 0;
+#X connect 18 0 16 0;
+#X connect 19 0 16 0;
+#X connect 21 0 22 0;
+#X connect 22 0 1 1;
+#X connect 26 0 21 0;
+#X connect 27 0 33 0;
+#X connect 28 0 29 0;
+#X connect 29 0 30 1;
+#X connect 30 0 27 0;
+#X connect 31 0 28 0;
+#X connect 32 0 29 1;
+#X connect 33 0 1 0;
+#X connect 34 0 35 0;
+#X connect 35 0 33 1;
+#X connect 36 0 8 0;
+#X connect 37 0 32 0;
+#X connect 38 0 31 0;
+#X connect 39 0 26 0;
